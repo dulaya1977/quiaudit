@@ -1,39 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuiAudit</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden; /* 隱藏超出邊界的捲軸 */
+            overflow: hidden; /* 防止出現雙重卷軸 */
         }
-        
-        .iframe-container {
+
+        .iframe-wrapper {
+            position: relative;
             width: 100%;
             height: 100%;
-            position: relative;
         }
 
         iframe {
             position: absolute;
-            top: 0;
             left: 0;
             width: 100%;
-            /* 重點：高度設為 100% 加上預計切掉的高度 */
-            height: calc(100% + 40px); 
             border: none;
             
-            /* 重點：這裡往上拉，把警語藏到視窗外面 */
-            transform: translateY(-40px); 
+            /* 設定說明：
+               1. top: -24px -> 將 iframe 往上推，把 GAS 的灰色警語推到視窗外。
+               2. height: calc(100% + 24px) -> 補回因為上推而損失的高度，確保底部填滿。
+            */
+            top: -24px; 
+            height: calc(100% + 24px);
         }
     </style>
 </head>
 <body>
 
-    <div class="iframe-container">
-        <iframe src="https://script.google.com/macros/s/AKfycbx1BSqoG2micW0WAxAj5xdAZJmV0GAZo367lhH0lhvEq5jS5Or6VZ5hMIEA3rAgp5Gd/exec"></iframe>
+    <div class="iframe-wrapper">
+        <iframe src="https://script.google.com/macros/s/AKfycbzPnchYpJuRShrO1cc7XPGEoUyPn0Yk3VMlEY-HJAnLp2Iy5ZRNUtizIvI319Av9dtD/exec"></iframe>
     </div>
 
 </body>
