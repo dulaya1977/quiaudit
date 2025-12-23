@@ -1,37 +1,40 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuiAudit</title>
-    
-    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2942/2942076.png">
-
     <style>
-        /* 設定全螢幕滿版樣式 */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            width: 100%;
-            overflow: hidden; /* 防止出現雙重卷軸 */
-            background-color: #f0f2f5; /* 設定與登入頁一致的背景色 */
+            overflow: hidden; /* 隱藏超出邊界的捲軸 */
         }
-
-        /* Iframe 設定 */
-        iframe {
+        
+        .iframe-container {
             width: 100%;
             height: 100%;
-            border: none; /* 移除邊框 */
-            display: block;
+            position: relative;
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* 重點：高度設為 100% 加上預計切掉的高度 */
+            height: calc(100% + 40px); 
+            border: none;
+            
+            /* 重點：這裡往上拉，把警語藏到視窗外面 */
+            transform: translateY(-40px); 
         }
     </style>
 </head>
 <body>
-    <iframe 
-        src="https://script.google.com/macros/s/AKfycbx1BSqoG2micW0WAxAj5xdAZJmV0GAZo367lhH0lhvEq5jS5Or6VZ5hMIEA3rAgp5Gd/exec" 
-        title="QuiAudit"
-        allow="fullscreen">
-    </iframe>
+
+    <div class="iframe-container">
+        <iframe src="https://script.google.com/macros/s/AKfycbx1BSqoG2micW0WAxAj5xdAZJmV0GAZo367lhH0lhvEq5jS5Or6VZ5hMIEA3rAgp5Gd/exec"></iframe>
+    </div>
+
 </body>
 </html>
